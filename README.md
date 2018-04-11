@@ -64,7 +64,7 @@ completing a full machine learning workflow end-to-end.
    replace `<your_s3_bucket_name_here>`.  The code line should now read similar to `bucket = 'smworkshop-john-smith'`.
    Do NOT paste the entire path (s3://.......), just the bucket name.
 
-> **NOTE:** training the model for this example typically takes about 9 minutes
+> **NOTE:** training the model for this example typically takes about 5 minutes
 
 ### Extra Credit
 
