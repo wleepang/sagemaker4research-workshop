@@ -72,7 +72,58 @@ completing a full machine learning workflow end-to-end.
 2. Re-train the model to identify an other digit.
 3. Try changing the classification algorithm (e.g. to a factorization machine) and repeating the workflow
 
-## Video Game Sales
+## Distributed Training with TensorFlow 
+
+In this module we will be using images of handwritten digits from the [MNIST Database](http://yann.lecun.com/exdb/mnist/) to demonstrate how to perform distributed training using SageMaker. Using a convolutional neural network model based on the [TensorFlow MNIST Example](https://github.com/tensorflow/models/tree/master/official/mnist), we will demonstrate how to use a Jupyter notebook and the [SageMaker Python SDK](https://github.com/aws/sagemaker-python-sdk) to create your own script to pre-process data, train a model, create a SageMaker hosted endpoint, and make predictions against this endpoint. The model will predict what the handwritten digit is in the image presented for prediction. Besides demonstrating a "bring your own script" for TensorFlow use case, the example also showcases how easy it is to set up a cluster of multiple instances for model training in SageMaker.
+
+1. In your notebook instance, click the **New** button on the right and select **Folder**.
+2. Click the checkbox next to your new folder, click the **Rename** button above in the menu bar, and give the folder a name such as 'tensorflow-distributed'.
+3. Click the folder to enter it.
+4. To upload the notebook, click the **Upload** button on the right. Then in the file selection popup, select the file 'TensorFlow_Distributed_MNIST.ipynb' from the notebooks subdirectory in the folder on your computer where you downloaded this GitHub repository. Click the blue **Upload** button that appears to the right of the notebook's file name.
+5. You are now ready to begin the notebook:  click the notebook's file name to open it, then follow the directions in the notebook.
+
+<p><strong>NOTE:  training the model for this example typically takes about 8 minutes.</strong></p>
+
+## Bringing Your Own Model
+
+A crucial aspect to scientific research is  building new tools / methods along 
+the way to making new discoveries.  For machine learning problems the code that 
+implements a specialized algorithm could be quite complex, or special framework 
+additions are needed.  Amazon SageMaker provides the flexibility to bring your 
+own algorithms and models and train and host them in the same way as built-in 
+algorithms.  In this module, we'll explore how to integrate a decision tree 
+algorithm written using the [https://scikit-learn.org](scikit-learn) machine 
+learning package for Python into SageMaker.
+
+Follow these steps:
+
+1. In your notebook instance, click on the top level folder.
+2. Navigate to `sample-notebooks / advanced_functionality / scikit_bring_your_own`
+3. Open the `scikit_bring_your_own.ipynb` notebook, the follow the directions in the notebook.
+
+There are two main parts in this example:
+
+1. building the container for a custom algorithm
+
+    1. Modify your current SageMakerExecution Role to have full access to Amazon ECR by adding the managed policy `AmazonEC2ContainerRegistryFullAccess`
+    2. The container build step takes about 1-2min to finish
+
+2. training and hosting the algorithm
+
+    1. Training for this algorithm typicall takes about 5 minutes
+
+## Using Public Datasets
+
+Machine learning is a data driven process.  Sharing key datasets publicly allows
+smart minds around the world to perform novel analyses and generate new insights.
+
+## Optional Modules
+
+These modules are also good examples of how to use Amazon SageMaker.  These are 
+slightly more advanced in the way they specify training parameters and launch 
+hosting endpoints.
+
+### Video Game Sales
 
 In this module, we'll work our way through an example Jupyter notebook that demonstrates how to use an Amazon-provided algorithm in SageMaker. More specifically, we'll use SageMaker's version of XGBoost, a popular and efficient open-source implementation of the gradient boosted trees algorithm. Gradient boosting is a supervised learning algorithm that attempts to predict a target variable by combining the estimates of a set of simpler, weaker models. XGBoost has done remarkably well in machine learning competitions because it robustly handles a wide variety of data types, relationships, and distributions. It often is a useful, go-to algorithm in working with structured data, such as data that might be found in relational databases and flat files. 
 
@@ -88,19 +139,7 @@ To begin, follow these steps:
 <p><strong>NOTE:  training the model for this example typically takes about 5 minutes.</strong></p>
 
 
-## Distributed Training with TensorFlow 
-
-In this module we will be using images of handwritten digits from the [MNIST Database](http://yann.lecun.com/exdb/mnist/) to demonstrate how to perform distributed training using SageMaker. Using a convolutional neural network model based on the [TensorFlow MNIST Example](https://github.com/tensorflow/models/tree/master/official/mnist), we will demonstrate how to use a Jupyter notebook and the [SageMaker Python SDK](https://github.com/aws/sagemaker-python-sdk) to create your own script to pre-process data, train a model, create a SageMaker hosted endpoint, and make predictions against this endpoint. The model will predict what the handwritten digit is in the image presented for prediction. Besides demonstrating a "bring your own script" for TensorFlow use case, the example also showcases how easy it is to set up a cluster of multiple instances for model training in SageMaker.
-
-1. In your notebook instance, click the **New** button on the right and select **Folder**.
-2. Click the checkbox next to your new folder, click the **Rename** button above in the menu bar, and give the folder a name such as 'tensorflow-distributed'.
-3. Click the folder to enter it.
-4. To upload the notebook, click the **Upload** button on the right. Then in the file selection popup, select the file 'TensorFlow_Distributed_MNIST.ipynb' from the notebooks subdirectory in the folder on your computer where you downloaded this GitHub repository. Click the blue **Upload** button that appears to the right of the notebook's file name.
-5. You are now ready to begin the notebook:  click the notebook's file name to open it, then follow the directions in the notebook.
-
-<p><strong>NOTE:  training the model for this example typically takes about 8 minutes.</strong></p>
-
-## Image Classification 
+### Image Classification 
 
 For this module, we'll work with an image classification example notebook. In particular, we'll use the Amazon-provided image classification algorithm, which is a supervised learning algorithm that takes an image as input and classifies it into one of multiple output categories. It uses a convolutional neural network (ResNet) that can be trained from scratch, or trained using transfer learning when a large number of training images are not available. Even if you don't have experience with neural networks or image classification, SageMaker's image classification algorithm makes the technology easy to use, with no need to design and set up your own neural network.  
 
@@ -115,22 +154,6 @@ Follow these steps:
 <p><strong>NOTE:  training the model for this example typically takes about 10 minutes.</strong> However, keep in mind that this is relatively short because transfer learning is used rather than training from scratch, which could take many hours.</p>
 
 
-## Bringing Your Own Model
-
-Research is always about making new discoveries and building new tools / methods along the way.  For machine learning
-problems the code that implements a specialized algorithm could be quite complex, or special framework additions are 
-needed.  Amazon SageMaker provides the flexibility to bring your own algorithms and models and train and host them in
-the same way as built-in algorithms.  In this module, we'll explore how to integrate a decision tree algorithm written
-using the [https://scikit-learn.org](scikit-learn) machine learning package for Python into SageMaker.
-
-Follow these steps:
-
-1. In your notebook instance, click on the top level folder.
-2. Navigate to `sample-notebooks / advanced_functionality / scikit_bring_your_own`
-3. Open the `scikit_bring_your_own.ipynb` notebook, the follow the directions in the notebook.
-
-
-## Using Public Datasets
 
 
 
