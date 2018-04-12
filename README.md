@@ -2,21 +2,25 @@
 
 ## Modules
 
-This workshop is divided into multiple modules. After completing **Preliminaries**, complete the module **Creating a Notebook Instance** next.  You can complete the remaining modules in any order. 
+This workshop is divided into multiple modules. After completing **Preliminaries**, complete the module **Creating a Notebook Instance** next.  
+It is recommended that you complete the primary lab modules in the order listed.  The optional lab modules can be completed in any order. 
 
 - Preliminaries
 
 - Creating a Notebook Instance
 
-- Video Game Sales 
+- Primary Lab Modules
 
-- Distributed Training with TensorFlow 
+  - Digit Classification with Linear Learner
+  - Distributed Training with TensorFlow 
+  - Bringing Your Own Model
+  - Using Public Datasets
 
-- Image Classification  
+- Optional Lab Modules
 
-- Bringing Your Own Model
+  - Video Game Sales 
+  - Image Classification  
 
-- Using Public Datasets
 
 ## Preliminaries
 
