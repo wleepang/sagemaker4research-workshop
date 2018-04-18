@@ -1,34 +1,59 @@
 # Introduction to SageMaker for Researchers
 
+Amazon SageMaker is a fully managed service that enables developers and data scientists to quickly and easily build, train, and deploy machine learning models at any scale. This repository contains a collection of hands on content that will introduce and guide you through using SageMaker for your research.
+
+![Overview](./images/overview.png)
+
+During this workshop, you'll explore various data sets, create model training jobs using SageMaker's hosted training feature, and create endpoints to serve predictions from your models using SageMaker's hosted endpoint feature.  
+
+**BEFORE attempting this workshop, please review the Prerequisites below and complete any actions that are required.**
+
+## Prerequisites
+
+### AWS Account
+
+In order to complete this workshop you'll need an AWS Account, and an AWS IAM user in that account with at least full permissions to the following AWS services: 
+
+- AWS IAM
+- Amazon S3
+- Amazon SageMaker
+
+**Use Your Own Account**: The code and instructions in this workshop assume only one student is using a given AWS account at a time. If you try sharing an account with another student, you'll run into naming conflicts for certain resources. You can work around these by appending a unique suffix to the resources that fail to create due to conflicts, but the instructions do not provide details on the changes required to make this work. Use a personal account or create a new AWS account for this workshop rather than using an organization’s account to ensure you have full access to the necessary services and to ensure you do not leave behind any resources from the workshop.
+
+**Costs**: Some, but NOT all, of the resources you will launch as part of this workshop are eligible for the AWS free tier if your account is less than 12 months old. See the [AWS Free Tier page](https://aws.amazon.com/free/) for more details. An example of a resource that is **not** covered by the free tier is the ml.m4.xlarge notebook instance used in some workshops. To avoid charges for endpoints and other resources you might not need after you've finished a workshop, please refer to the [**Cleanup Guide**](./CleanupGuide). 
+
+
+### AWS Region
+
+SageMaker is not available in all AWS Regions at this time.  Accordingly, we recommend running this workshop in one of the following supported AWS Regions:  N. Virginia, Oregon, Ohio, or Ireland.
+
+Once you've chosen a region, you should create all of the resources for this workshop there, including a new Amazon S3 bucket and a new SageMaker notebook instance. Make sure you select your region from the dropdown in the upper right corner of the AWS Console before getting started.
+
+![Region selection screenshot](./images/region-selection.png)
+
+### Browser
+
+We recommend you use the latest version of Chrome or Firefox to complete this workshop.
+
 ## Modules
 
 This workshop is divided into multiple modules. After completing **Preliminaries**, complete the module **Creating a Notebook Instance** next.  
-It is recommended that you complete the primary lab modules in the order listed.  The optional lab modules can be completed in any order. 
+It is recommended that you complete the lab modules in the order listed.
 
 - Preliminaries
 
 - Creating a Notebook Instance
 
-- Primary Lab Modules
+- Lab Modules
 
   - Digit Classification with Linear Learner
   - Distributed Training with TensorFlow 
   - Bringing Your Own Model
   - Using Public Datasets
 
-- Optional Lab Modules
-
-  - Video Game Sales 
-  - Image Classification  
-
-
 ## Preliminaries
 
-- Be sure you have completed all of the Prerequisites listed in the [**main README**](../README.md).
-
-- Download this repository to your computer. To do so:
-  - Return to the home page of this GitHub repository or open it in another tab;
-  - Click the green **Clone or download** button from the upper right of the main page of the repository, then **Download ZIP**.
+Be sure you have completed all of the prerequisites above.
 
 If you are new to using Jupyter notebooks, read the next section, otherwise you may now skip ahead to the next module.
 
@@ -38,7 +63,7 @@ Jupyter is an open-source web application that allows you to create and share do
 
 There are two main types of "cells" in a notebook:  code cells, and "markdown" cells with explanatory text. You will be running the code cells.  These are distinguished by having "In" next to them in the left margin next to the cell, and a greyish background.  Markdown cells lack "In" and have a white background. In the screenshot below, the upper cell is a markdown cell, while the lower cell is a code cell:
 
-![Cells](../images/cells.png)
+![Cells](./images/cells.png)
 
 To run a code cell, simply click in it, then either click the **Run Cell** button in the notebook's toolbar, or use Control+Enter from your computer's keyboard. It may take a few seconds to a few minutes for a code cell to run. You can determine whether a cell is running by examining the `In[]:` indicator in the left margin next to each cell:  a cell will show `In [*]:` when running, and `In [a number]:` when complete.
 
@@ -49,131 +74,42 @@ Please run each code cell in order, and **only once**, to avoid repeated operati
 
 SageMaker provides hosted Jupyter notebooks that require no setup, so you can begin processing your training data sets immediately. With a few clicks in the SageMaker console, you can create a fully managed notebook instance, pre-loaded with useful libraries for machine learning. You need only add your data.
 
-To create a SageMaker notebook instance for this workshop, follow the instructions at [**Creating a Notebook Instance**](../NotebookCreation), then return here to continue with the next module of the workshop.
+To create a SageMaker notebook instance for this workshop, follow the instructions at [**Creating a Notebook Instance**](./Modules/NotebookCreation), then return here to continue with the next module of the workshop.
 
 
-## Digit Classification with Linear Learner
+## Lab Modules
 
-In this module we will introduce you to Amazon Sagemaker using the Amaazon-provided Linear Learner algorithm to perform
-binary classification of images of handwritten digits from the [MNIST Database](http://yann.lecun.com/exdb/mnist/).
-Specifically, we'll train a model to identify whether or not a digit is a "0". In doing so, we will demonstrate how to 
-use a Jupyter notebook and the [SageMaker Python SDK](https://github.com/aws/sagemaker-python-sdk) to create a script to 
-pre-process data, train a model, create a SageMaker hosted endpoint, and make predictions against this endpoint - 
-completing a full machine learning workflow end-to-end.
+1. [Digit Classification with Linear Learner](./Modules/Labs/01-digit-classification-linear-learner.md)
 
-1. In your notebook instance, click on the top level folder.
-2. Navigate to `sample-notebooks / introduction_to_amazon_algorithms / linear_learner_mnist`
-3. Open the `linear_learner_mnist.ipynb` notebook, the follow the directions in the notebook.
-4. In the `bucket = '<your_s3_bucket_name_here>'` code line, paste the name of the S3 bucket you created in Module 1 to 
-   replace `<your_s3_bucket_name_here>`.  The code line should now read similar to `bucket = 'smworkshop-john-smith'`.
-   Do NOT paste the entire path (s3://.......), just the bucket name.
+2. [Distributed Training with TensorFlow](./Modules/Labs/02-distributed-training-tensorflow.md)
 
-> **NOTE:** training the model for this example typically takes about 5 minutes
+3. [Bringing Your Own Model](./Modules/Labs/03-bring-your-own-model.md)
 
-### Extra Credit
-
-1. How good is the model?  Compute precision, recall, and f1 metrics to find out.
-2. Re-train the model to identify an other digit.
-3. Try changing the classification algorithm (e.g. to a factorization machine) and repeating the workflow
-
-## Distributed Training with TensorFlow 
-
-In this module we will be using images of handwritten digits from the [MNIST Database](http://yann.lecun.com/exdb/mnist/) to demonstrate how to perform distributed training using SageMaker. Using a convolutional neural network model based on the [TensorFlow MNIST Example](https://github.com/tensorflow/models/tree/master/official/mnist), we will demonstrate how to use a Jupyter notebook and the [SageMaker Python SDK](https://github.com/aws/sagemaker-python-sdk) to create your own script to pre-process data, train a model, create a SageMaker hosted endpoint, and make predictions against this endpoint. The model will predict what the handwritten digit is in the image presented for prediction. Besides demonstrating a "bring your own script" for TensorFlow use case, the example also showcases how easy it is to set up a cluster of multiple instances for model training in SageMaker.
-
-1. In your notebook instance, click the **New** button on the right and select **Folder**.
-2. Click the checkbox next to your new folder, click the **Rename** button above in the menu bar, and give the folder a name such as 'tensorflow-distributed'.
-3. Click the folder to enter it.
-4. To upload the notebook, click the **Upload** button on the right. Then in the file selection popup, select the file 'TensorFlow_Distributed_MNIST.ipynb' from the notebooks subdirectory in the folder on your computer where you downloaded this GitHub repository. Click the blue **Upload** button that appears to the right of the notebook's file name.
-5. You are now ready to begin the notebook:  click the notebook's file name to open it, then follow the directions in the notebook.
-
-<p><strong>NOTE:  training the model for this example typically takes about 8 minutes.</strong></p>
-
-## Bringing Your Own Model
-
-A crucial aspect to scientific research is  building new tools / methods along 
-the way to making new discoveries.  For machine learning problems the code that 
-implements a specialized algorithm could be quite complex, or special framework 
-additions are needed.  Amazon SageMaker provides the flexibility to bring your 
-own algorithms and models and train and host them in the same way as built-in 
-algorithms.  In this module, we'll explore how to integrate a decision tree 
-algorithm written using the [https://scikit-learn.org](scikit-learn) machine 
-learning package for Python into SageMaker.
-
-Follow these steps:
-
-1. In your notebook instance, click on the top level folder.
-2. Navigate to `sample-notebooks / advanced_functionality / scikit_bring_your_own`
-3. Open the `scikit_bring_your_own.ipynb` notebook, the follow the directions in the notebook.
-
-There are two main parts in this example:
-
-1. building the container for a custom algorithm
-
-    1. Modify your current SageMakerExecution Role to have full access to Amazon ECR by adding the managed policy `AmazonEC2ContainerRegistryFullAccess`
-    2. The container build step takes about 1-2min to finish
-
-2. training and hosting the algorithm
-
-    1. Training for this algorithm typicall takes about 5 minutes
-
-## Using Public Datasets
-
-Machine learning is a data driven process.  Sharing key datasets publicly allows
-smart minds around the world to perform novel analyses and generate new insights.
-In this example, we will use the [1000 Genomes Project](https://aws.amazon.com/1000genomes/) 
-dataset - a collection of DNA sequence variations from over 1000 individuals.  
-We will apply unsupervised learning via the Amazon-provided K-Means algorithm to 
-group the geographic location of sequences based on their variant information.
-
-1. In your notebook instance, click the **New** button on the right and select **Folder**.  
-2. Click the checkbox next to your new folder, click the **Rename** button above in the menu bar, and give the folder a name such as 'genomics-clustering'.
-3. Click the folder to enter it.
-4. To upload the notebook, click the **Upload** button on the right. Then in the file selection popup, select the file 'genome-kmeans-py3.ipynb' from the notebooks subdirectory in the folder on your computer where you downloaded this GitHub repository. Click the blue **Upload** button that appears to the right of the notebook's file name.
-5. You are now ready to begin the notebook:  click the notebook's file name to open it.
-6. In the ```bucket = '<your_s3_bucket_name_here>'``` code line, paste the name of the S3 bucket you created in Module 1 to replace ```<your_s3_bucket_name_here>```.  The code line should now read similar to ```bucket = 'smworkshop-john-smith'```.  Do NOT paste the entire path (s3://.......), just the bucket name.  
-
-## Optional Modules
-
-These modules are also good examples of how to use Amazon SageMaker.  These are 
-slightly more advanced in the way they specify training parameters and launch 
-hosting endpoints.
-
-### Video Game Sales
-
-In this module, we'll work our way through an example Jupyter notebook that demonstrates how to use an Amazon-provided algorithm in SageMaker. More specifically, we'll use SageMaker's version of XGBoost, a popular and efficient open-source implementation of the gradient boosted trees algorithm. Gradient boosting is a supervised learning algorithm that attempts to predict a target variable by combining the estimates of a set of simpler, weaker models. XGBoost has done remarkably well in machine learning competitions because it robustly handles a wide variety of data types, relationships, and distributions. It often is a useful, go-to algorithm in working with structured data, such as data that might be found in relational databases and flat files. 
-
-To begin, follow these steps:
-
-1. In your notebook instance, click the **New** button on the right and select **Folder**.  
-2. Click the checkbox next to your new folder, click the **Rename** button above in the menu bar, and give the folder a name such as 'video-game-sales'.
-3. Click the folder to enter it.
-4. To upload the notebook, click the **Upload** button on the right. Then in the file selection popup, select the file 'video-game-sales-xgboost.ipynb' from the notebooks subdirectory in the folder on your computer where you downloaded this GitHub repository. Click the blue **Upload** button that appears to the right of the notebook's file name.
-5. You are now ready to begin the notebook:  click the notebook's file name to open it.
-6. In the ```bucket = '<your_s3_bucket_name_here>'``` code line, paste the name of the S3 bucket you created in Module 1 to replace ```<your_s3_bucket_name_here>```.  The code line should now read similar to ```bucket = 'smworkshop-john-smith'```.  Do NOT paste the entire path (s3://.......), just the bucket name.  
-
-<p><strong>NOTE:  training the model for this example typically takes about 5 minutes.</strong></p>
-
-
-### Image Classification 
-
-For this module, we'll work with an image classification example notebook. In particular, we'll use the Amazon-provided image classification algorithm, which is a supervised learning algorithm that takes an image as input and classifies it into one of multiple output categories. It uses a convolutional neural network (ResNet) that can be trained from scratch, or trained using transfer learning when a large number of training images are not available. Even if you don't have experience with neural networks or image classification, SageMaker's image classification algorithm makes the technology easy to use, with no need to design and set up your own neural network.  
-
-Follow these steps:
-
-1. In your notebook instance, click the **New** button on the right and select **Folder**.  
-2. Click the checkbox next to your new folder, click the **Rename** button above in the menu bar, and give the folder a name such as 'image-classification'.
-3. Click the folder to enter it.
-4. To upload the notebook, click the **Upload** button on the right. Then in the file selection popup, select the file 'Image-classification-transfer-learning.ipynb' from the notebooks subdirectory in the folder on your computer where you downloaded this GitHub repository. Click the blue **Upload** button that appears to the right of the notebook's file name.
-5. You are now ready to begin the notebook:  click the notebook's file name to open it, then follow the directions in the notebook.
-
-<p><strong>NOTE:  training the model for this example typically takes about 10 minutes.</strong> However, keep in mind that this is relatively short because transfer learning is used rather than training from scratch, which could take many hours.</p>
-
-
-
+4. [Using Public Datasets](./Modules/Labs/04-using-public-datasets.md)
 
 
 ## Cleanup
 
-To avoid charges for endpoints and other resources you might not need after the workshop, please refer to the [**Cleanup Guide**](../CleanupGuide).
+To avoid charges for resources you no longer need when you're done with this workshop, you can delete them or, in the case of your notebook instance, stop them.  Here are the resources you should consider:
+
+- **Endpoints**:  these are the clusters of one or more instances serving inferences from your models. If you did not delete them from within a notebook, you can delete them via the SageMaker console.  To do so:
+
+  - Click the **Endpoints** link in the left panel.  
+  
+  - Then, for each endpoint, click the radio button next to it, then select **Delete** from the **Actions** drop down menu. 
+  
+  - You can follow a similar procedure to delete the related Models and Endpoint configurations.
 
 
+- **Notebook instance**:  you have two options if you do not want to keep the notebook instance running. If you would like to save it for later, you can stop rather than deleting it. 
+
+  - To **stop** a notebook instance:  click the **Notebook instances** link in the left pane of the SageMaker console home page. Next, click the **Stop** link under the 'Actions' column to the left of your notebook instance's name.  After the notebook instance is stopped, you can start it again by clicking the **Start** link.  Keep in mind that if you stop rather than delete it, you will be charged for the storage associated with it.  
+
+  - To **delete** a notebook instance:  first stop it per the instruction above. Next, click the radio button next to your notebook instance, then select **Delete** from the **Actions** drop down menu. 
+
+- **S3 Bucket**:  if you retain the S3 bucket created for this workshop, you will be charged for storage.  To avoid these charges if you no longer wish to use the bucket, you may delete it. To delete the bucket, go to the S3 service console, and locate your bucket's name in the bucket table. Next, click in the bucket table row for your bucket to highlight the table row. At the top of the table, the **Delete Bucket** button should now be enabled, so click it and then click the **Confirm** button in the resulting pop-up to complete the deletion.  
+
+
+## License
+
+The contents of this workshop are licensed under the [Apache 2.0 License](./LICENSE).
