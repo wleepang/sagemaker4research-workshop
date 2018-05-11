@@ -37,19 +37,18 @@ We recommend you use the latest version of Chrome or Firefox to complete this wo
 
 ## Modules
 
-This workshop is divided into multiple modules. After completing **Preliminaries**, complete the module **Creating a Notebook Instance** next.  
-It is recommended that you complete the lab modules in the order listed.
+This workshop is divided into the following modules. It is recommended that you complete them in the order listed.
 
 - Preliminaries
 
 - Creating a Notebook Instance
 
-- Lab Modules
+- Labs
 
-  - Digit Classification with Linear Learner
-  - Distributed Training with TensorFlow 
-  - Bringing Your Own Model
-  - Using Public Datasets
+  1. Digit Classification with Linear Learner
+  2. Distributed Training with TensorFlow 
+  3. Bringing Your Own Model
+  4. Using Public Datasets
 
 ## Preliminaries
 
