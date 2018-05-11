@@ -55,9 +55,41 @@ It is recommended that you complete the lab modules in the order listed.
 
 Be sure you have completed all of the prerequisites above.
 
-If you are new to using Jupyter notebooks, read the next section, otherwise you may now skip ahead to the next module.
+
+### Amazon Web Services:  A Brief Overview
+
+If you are new to Amazon Web Services (AWS), read this section, otherwise you can skip ahead to the next module. 
+
+Amazon Web Services (AWS) is a secure cloud services platform, offering compute power, database storage, content delivery and other functionality.
+
+#### What is Cloud Computing?
+
+Before cloud computing, if you wanted compute, storage, and other IT services, you first needed to buy physical servers, network equipment, racks, cabling, etc.  Then in a secure, climate controlled room (something you had to organize yourself), you would setup the equipment you purchased: unpack, install, connect, configure, assign, manage, and monitor.  You paid the bills to power all of this infrastructure -- and -- every few years you had to replace your servers and infrastructure (assuming they lasted a few years), along with occasionally purchasing additional serviers to meet projected increases in demand.
+
+In the cloud computing model you are not buying physical assets.  Instead, you purchase time and access to infrastructure that is setup and maintained by a Cloud Service Provider - e.g. Amazon Web Services (AWS).  In this model, computing infrastructure can be treated as a utility, much like municipal electricity.  Think of how you use electricity in your home.  You have access to it via plugs in the wall and pay a monthly bill for the amount that you use to run your lights, appliances, etc.  You don't need to worry about the engineering details of how to generate electricity and transmit it from the power station to your home.  With cloud computing, you don't need to worry about maintaining the computing infrastructure hardware.  You only need to choose what type and quantity of infrastructure you need, and for how long you need to use it for.
+
+#### Core Services
+
+At the time of this writing, AWS offers over 100 distinct services that you can use to build architecture that best suits your needs.  Nearly all of these services are built on top of foundational "core" services:
+
+- Compute - Amazon Elastic Compute Cloud (EC2).  This service provides servers of varying types (CPU, GPU, FPGA, etc) and capabilities.
+- Storage - Amazon Elastic Block Store (EBS) and Amazon Simple Storage Service (S3).  These services provide block level storage for EC2 servers and generic object storage.
+- Networking - Amazon Virtual Private Cloud (VPC).  This service handles network security and routing between your EC2 servers.
+
+Access to all AWS services is managed via AWS Identity and Access Management (IAM) which allows fine grain control over users within an AWS account, what services they can access, and how such services can be used.
+
+#### Security
+
+Cloud security at AWS is the highest priority. Helping to protect the confidentiality, integrity, and availability of our customers’ systems and data is of the utmost importance to AWS, as is maintaining customer trust and confidence.
+
+All AWS users benefit from data center architecture and network architecture built to satisfy the requirements of the most security-sensitive organizations. AWS and its partners offer hundreds of tools and features to help you meet your security objectives for visibility, auditability, controllability, and agility. This means that you can have the security you need, but without the capital outlay and with much lower operational overhead than in an on-premises environment.
+
+Security is, nonetheless, a shared responsibility. AWS takes responsibility for securing the underlying infrastructure that supports the cloud, and you’re responsible for anything you put in the cloud or connect to the cloud. This shared responsibility model can reduce your operational burden in many ways, and it may even improve your default security posture without additional action on your part.
+
 
 ### Jupyter Notebooks:  A Brief Overview
+
+If you are new to using Jupyter notebooks, read this section, otherwise you may now skip ahead to the next module.
 
 Jupyter is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, and much more. With respect to code, it can be thought of as a web-based IDE that executes code on the server it is running on instead of locally. 
 
