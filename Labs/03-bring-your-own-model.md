@@ -5,7 +5,7 @@ the way to making new discoveries.  For machine learning problems the code that
 implements a specialized algorithm could be quite complex, or special framework 
 additions are needed.  Amazon SageMaker provides the flexibility to bring your 
 own algorithms and models and train and host them in the same way as built-in 
-algorithms.  In this module, we'll explore how to integrate a decision tree 
+algorithms.  In this lab, we'll explore how to integrate a decision tree 
 algorithm written using the [https://scikit-learn.org](scikit-learn) machine 
 learning package for Python into SageMaker.
 

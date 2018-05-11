@@ -2,7 +2,7 @@
 
 Machine learning is a data driven process.  Sharing key datasets publicly allows
 smart minds around the world to perform novel analyses and generate new insights.
-In this example, we will use the [1000 Genomes Project](https://aws.amazon.com/1000genomes/) 
+In this lab, we will use the [1000 Genomes Project](https://aws.amazon.com/1000genomes/) 
 dataset - a collection of DNA sequence variations from over 1000 individuals.  
 We will apply unsupervised learning via the Amazon-provided K-Means algorithm to 
 group the geographic location of sequences based on their variant information.

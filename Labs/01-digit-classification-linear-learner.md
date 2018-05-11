@@ -1,6 +1,6 @@
 # Digit Classification with Linear Learner
 
-In this module we will introduce you to Amazon Sagemaker using the Amaazon-provided Linear Learner algorithm to perform
+In this lab we will introduce you to Amazon Sagemaker using the Amaazon-provided Linear Learner algorithm to perform
 binary classification of images of handwritten digits from the [MNIST Database](http://yann.lecun.com/exdb/mnist/).
 Specifically, we'll train a model to identify whether or not a digit is a "0". In doing so, we will demonstrate how to 
 use a Jupyter notebook and the [SageMaker Python SDK](https://github.com/aws/sagemaker-python-sdk) to create a script to 
