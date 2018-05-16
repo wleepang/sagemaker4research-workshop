@@ -45,10 +45,10 @@ This workshop is divided into the following modules. It is recommended that you 
 
 - [Labs](#labs)
 
-  1. [Digit Classification with Linear Learner](./Modules/Labs/01-digit-classification-linear-learner.md)
-  2. [Distributed Training with TensorFlow](./Modules/Labs/02-distributed-training-tensorflow.md)
-  3. [Bringing Your Own Model](./Modules/Labs/03-bring-your-own-model.md)
-  4. [Using Public Datasets](./Modules/Labs/04-using-public-datasets.md)
+  1. [Digit Classification with Linear Learner](./Labs/01-digit-classification-linear-learner.md)
+  2. [Distributed Training with TensorFlow](./Labs/02-distributed-training-tensorflow.md)
+  3. [Bringing Your Own Model](./Labs/03-bring-your-own-model.md)
+  4. [Using Public Datasets](./Labs/04-using-public-datasets.md)
 
 ## Preliminaries
 
@@ -169,19 +169,19 @@ Use the console or AWS CLI to create an Amazon S3 bucket. Keep in mind that your
 
 The labs for this workshop have been chosen to highlight capabilities of Amazon SageMaker that are most relevant to scientific research.  They are intended to guide students from out-of-the-box capabilities, to using custom frameworks and code, and utilizing large external datasets.
 
-1. [Digit Classification with Linear Learner](./Modules/Labs/01-digit-classification-linear-learner.md)
+1. [Digit Classification with Linear Learner](./Labs/01-digit-classification-linear-learner.md)
 
     In this lab we will introduce you to Amazon Sagemaker using the Amaazon-provided Linear Learner algorithm to perform binary classification of images of handwritten digits from the [MNIST Database](http://yann.lecun.com/exdb/mnist/). Specifically, we'll train a model to identify whether or not a digit is a "0". In doing so, we will demonstrate how to use a Jupyter notebook and the [SageMaker Python SDK](https://github.com/aws/sagemaker-python-sdk) to create a script to pre-process data, train a model, create a SageMaker hosted endpoint, and make predictions against this endpoint - completing a full machine learning workflow end-to-end.
 
-2. [Distributed Training with TensorFlow](./Modules/Labs/02-distributed-training-tensorflow.md)
+2. [Distributed Training with TensorFlow](./Labs/02-distributed-training-tensorflow.md)
 
     In this lab we will be using images of handwritten digits from the [MNIST Database](http://yann.lecun.com/exdb/mnist/) to demonstrate how to perform distributed training using SageMaker. Using a convolutional neural network model based on the [TensorFlow MNIST Example](https://github.com/tensorflow/models/tree/master/official/mnist), we will demonstrate how to use a Jupyter notebook and the [SageMaker Python SDK](https://github.com/aws/sagemaker-python-sdk) to create your own script to pre-process data, train a model, create a SageMaker hosted endpoint, and make predictions against this endpoint. The model will predict what the handwritten digit is in the image presented for prediction. Besides demonstrating a "bring your own script" for TensorFlow use case, the example also showcases how easy it is to set up a cluster of multiple instances for model training in SageMaker.
 
-3. [Bringing Your Own Model](./Modules/Labs/03-bring-your-own-model.md)
+3. [Bringing Your Own Model](./Labs/03-bring-your-own-model.md)
 
     A crucial aspect to scientific research is  building new tools / methods along the way to making new discoveries.  For machine learning problems the code that implements a specialized algorithm could be quite complex, or special framework additions are needed.  Amazon SageMaker provides the flexibility to bring your own algorithms and models and train and host them in the same way as built-in algorithms.  In this lab, we'll explore how to integrate a decision tree algorithm written using the [https://scikit-learn.org](scikit-learn) machine learning package for Python into SageMaker.
 
-4. [Using Public Datasets](./Modules/Labs/04-using-public-datasets.md)
+4. [Using Public Datasets](./Labs/04-using-public-datasets.md)
 
     Machine learning is a data driven process.  Sharing key datasets publicly allows smart minds around the world to perform novel analyses and generate new insights.  In this lab, we will use the [1000 Genomes Project](https://aws.amazon.com/1000genomes/) dataset - a collection of DNA sequence variations from over 1000 individuals.  We will apply unsupervised learning via the Amazon-provided K-Means algorithm to group the geographic location of sequences based on their variant information.
 
